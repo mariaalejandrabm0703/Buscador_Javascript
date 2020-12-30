@@ -2,12 +2,16 @@
     Variables
 */
 const resultado = document.querySelector("#resultado");
+const anio = document.querySelector("#year");
+const max = new Date().getFullYear();
+const min = max - 10;
 
 /*
     Eventos
 */
 document.addEventListener("DOMContentLoaded", () => {
   mostrarAutos();
+  llenarAnios();
 });
 
 /*
@@ -23,4 +27,13 @@ function mostrarAutos() {
     // Se adiciona al HTML
     resultado.appendChild(autoHTML);
   });
+}
+
+function llenarAnios() {
+  for (let i = max; i > min; i--) {
+    const opcion = document.createElement("option");
+    opcion.value = i;
+    opcion.textContent = i;
+    year.appendChild(opcion);
+  }
 }
