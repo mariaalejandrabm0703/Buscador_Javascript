@@ -109,7 +109,11 @@ function filtrarAutos() {
     .filter(filtrarMin)
     .filter(filtrarMax);
 
-  mostrarAutos(resul);
+  if (resul.length > 0) {
+    mostrarAutos(resul);
+  } else {
+    noResultado();
+  }
 }
 
 function filtrarMarca(auto) {
@@ -159,4 +163,12 @@ function filtrarMax(auto) {
     return auto.precio <= datosBusqueda.maximo;
   }
   return auto;
+}
+
+function noResultado() {
+  limpiarHTML();
+  const noResultado = document.createElement("div");
+  noResultado.classList.add("alert", "error");
+  noResultado.textContent = "No se encontraron resultados.";
+  resultado.appendChild(noResultado);
 }
